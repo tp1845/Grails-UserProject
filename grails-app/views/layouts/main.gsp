@@ -9,16 +9,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <asset:stylesheet src="application.css"/>
+    <asset:javascript src="application.js"/>
+    <script type="text/javascript">
+        %{--OCB.baseURL = "${UIHelper.appBaseURL()}";--}%
+        <g:if test="${flash?.message && flash?.message?.info}">
+        jQuery(document).ready(function () {
+            OCB.messageBox.showMessage(Boolean(${flash.message?.success}), "${flash.message?.info}");
+        });
+        </g:if>
+    </script>
 
     <g:layoutHead/>
 </head>
 <body>
 
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark rounded">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="#">Grails Online Contacts Book</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
-                data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
+                data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault"
+                aria-expanded="false"
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,13 +38,10 @@
 
 <div class="container-fluid">
     <div class="row">
-
-
         <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
             <ul class="list-group">
-                <li class="list-group-item"><a href="#">Dashboard</a></li>
-                <li class="list-group-item"><a href="#">Contact</a></li>
-                <li class="list-group-item"><a href="#">Contact Group</a></li>
+                <g:link controller="member" action="index"><li class="list-group-item">Index</li></g:link>
+                <g:link controller="member" action="create"><li class="list-group-item">Create</li></g:link>
             </ul>
         </nav>
 

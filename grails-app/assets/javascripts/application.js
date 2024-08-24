@@ -8,6 +8,9 @@
 //= require jquery-2.2.0.min
 //= require bootstrap
 //= require ocb
+//= require ocb.init
+//= require ocb.message.box
+//= require jquery-confirm.min
 //= require_tree .
 //= require_self
 
